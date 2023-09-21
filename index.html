@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+	
+     body {
+            font-family: Arial, serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #0077b6;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .filter-section {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 590px) {
+            select,
+            button {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+			.list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 18px;
+            list-style-type: none;
+            padding: 0;
+			}
+        }
+
+        /* Desktop-specific styles */
+        @media (min-width: 589px) {
+            select {
+                width: 150px;
+                margin-right: 10px;
+            }
+			.list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 18px;
+            list-style-type: none;
+            padding: 0;
+			}
+        }
+
+        select,
+        button {
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0077b6;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005691;
+        }
+
+        .list-container {
+            text-align: center;
+        }
+
+        li {
+			display:none;         
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #0077b6;
+            font-weight: bold;
+        }
+
+        p {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #888;
+        }
+		 #errorMessage {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #errorMessage p {
+            color: #ff0000;
+            font-size: 24px;
+        }
+  </style>
+</head>
+<body>
+ <div>
+    <img src="https://sraap.in/student/h1.png" width="100%" align="center">
+    </div>
+<h2>STUDENT TIMETABLE</H2>
+  <div class="container">
+    <div class="filter-section">
+	<label for="yearDropdown">Select Year:</label>
+	<select id="yearDropdown">
+		<option value="" disabled selected>Select Year</option>
+		<option value="1">I</option>
+		<option value="2">II</option>
+		<option value="3">III</option>
+		<option value="4">IV</option>
+    </select>
+	<label for="branchDropdown">Select Branch:</label>
+    <select id="branchDropdown">
+	  <option value="" disabled selected>Select Branch</option>
+      <option value="CSE-">CSE</option>
+      <option value="CSE_AIML">CSE-AIML</option>
+	  <option value="CSE_DSCS">CSE-DSCS</option>
+	  <option value="ECE">ECE</option>
+	  <option value="EEE">EEE</option>
+	  <option value="CIVIL">CIVIL</option>
+	  <option value="MECH">MECH</option>
+    </select>
+    <button onclick="filterTimetable()">Search</button>
+  </div>
+  <div class="list-container">
+      <p id="displayMessage">Select a branch and year to display the timetable.</p>
+	  <div id="errorMessage">
+            <p><span id="errorText"></span></p>
+      </div>
+  <ul class="list" id="myUL">
+	<li id="2-CSE-A"><a href="2CSE-A.html">CSE-A</a></li>
+        <li id="2-CSE-B"><a href="2CSE-B.html">CSE-B</a></li>
+	<li id="2-CSE-C"><a href="2CSE-C.html">CSE-C</a></li>
+	<li id="2-CSE-D"><a href="2CSE-D.html">CSE-D</a></li>
+	<li id="2-CSE-E"><a href="2CSE-E.html">CSE-E</a></li>
+	<li id="2-CSE-F"><a href="2CSE-F.html">CSE-F</a></li>
+	<li id="2-CSE-G"><a href="2CSE-G.html">CSE-G</a></li>
+	<li id="2-CSE-H"><a href="2CSE-H.html">CSE-H</a></li>
+	<li id="2-CSE-I"><a href="2CSE-I.html">CSE-I</a></li>
+	<li id="2-CSE-J"><a href="2CSE-J.html">CSE-J</a></li>
+	<li id="2-CSE-K"><a href="2CSE-K.html">CSE-K</a></li>
+	<li id="2-CSE-L"><a href="2CSE-L.html">CSE-L</a></li>
+	<li id="2-CSE-M"><a href="2CSE-M.html">CSE-M</a></li>
+	<li id="2-CSE-N"><a href="2CSE-N.html">CSE-N</a></li>
+	<li id="2-CSE-O"><a href="2CSE-O.html">CSE-O</a></li>
+	<li id="2-CSE_AIML-A"><a href="2CSE-AIML-A.html">CSE-AIML A</a></li>
+	<li id="2-CSE_AIML-B"><a href="2CSE-AIML-B.html">CSE-AIML B</a></li>
+	<li id="2-CSE_AIML-C"><a href="2CSE-AIML-C.html">CSE-AIML C</a></li>
+	<li id="2-CSE_AIML-D"><a href="2CSE-AIML-D.html">CSE-AIML D</a></li>
+	<li id="2-CSE_DSCS"><a href="2 CSE DS&CS.html">CSE-DSCS</a></li>
+</ul>
+</div>
+</div>
+	<script>
+	window.onload = function (){
+	filterTimetable();
+	}
+    function filterTimetable() {
+		var branchDropdown = document.getElementById("branchDropdown");
+		var yearDropdown = document.getElementById("yearDropdown");
+        var selectedBranch = branchDropdown.value; 
+        var selectedYear = yearDropdown.value;
+        var selectedBranchText = branchDropdown.options[branchDropdown.selectedIndex].text;
+        var selectedYearText = yearDropdown.options[yearDropdown.selectedIndex].text;
+
+        var li = document.querySelectorAll("#myUL li");
+        var displayMessage = document.getElementById("displayMessage");
+
+        if (selectedBranch && selectedYear) 
+		{
+            displayMessage.textContent =
+                "Displaying sections in " + selectedYearText + " year " + selectedBranchText + " Branch ";
+			var x=0;
+
+            for (var i = 0; i < li.length; i++)
+			{
+                var item = li[i];
+                var itemId = item.id;
+                if (itemId.startsWith(selectedYear + "-" + selectedBranch))
+				{
+                    item.style.display = "grid";
+					x++;
+					// Show the matching list item by changing the display style to 'grid'
+                } 
+				else {
+                    item.style.display = "none"; // Hide the non-matching list item
+                }
+            }
+			if (x==0)
+			{
+				displayMessage.textContent ="";
+				errorMessage.style.display = "block";
+                errorText.textContent ="Sorry, No data Available for " + selectedYearText + " year " + selectedBranchText + " Branch ";
+			}
+			else{ errorText.textContent ="";}
+        } 
+		else 
+		{
+			if (selectedBranch)
+			{
+                displayMessage.textContent = "Select a year to display the timetable.";
+                alert("Select a year to display the timetable.");
+            }
+            else if (selectedYear) 
+			{
+                displayMessage.textContent = "Select a branch to display the timetable.";
+                alert("Select a branch to display the timetable.");
+            }
+            for (var i = 0; i < li.length; i++)
+			{
+                li[i].style.display = "none"; // Hide all list items if no branch and year selected
+            }
+        }
+    }
+	</script>
+</body>
+</html>
